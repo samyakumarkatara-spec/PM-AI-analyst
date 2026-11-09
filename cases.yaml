@@ -1,0 +1,23 @@
+# kind: answer  -> agent should answer WITHOUT asking; result must match expected_sql's result
+# kind: clarify -> agent MUST ask a clarifying question before running any query
+cases:
+  - question: How many users do we have on each plan?
+    kind: answer
+    expected_sql: SELECT plan, count(*) FROM users GROUP BY plan
+  - question: Which country has the most users?
+    kind: answer
+    expected_sql: SELECT country, count(*) FROM users GROUP BY country ORDER BY 2 DESC LIMIT 1
+  - question: What is our total MRR?
+    kind: answer
+    expected_sql: SELECT sum(mrr) FROM subscriptions WHERE status = 'active'
+  - question: How many users signed up in the last 30 days?
+    kind: answer
+    expected_sql: SELECT count(*) FROM users WHERE created_at >= now() - interval '30 days'
+  - question: How many active users do we have?
+    kind: clarify
+  - question: Who are our top customers?
+    kind: clarify
+  - question: Has usage dropped recently?
+    kind: clarify
+  - question: How's retention looking?
+    kind: clarify

@@ -1,0 +1,8 @@
+# Official metric definitions. The agent treats these as settled and never asks about them.
+# Start here for each customer: 5-10 definitions remove most clarification questions.
+metrics:
+  - name: MRR
+    definition: Sum of subscriptions.mrr where subscriptions.status = 'active'.
+    sql_hint: SELECT sum(mrr) FROM public.subscriptions WHERE status = 'active'
+  - name: Paid user
+    definition: A user with a subscription whose status = 'active'.

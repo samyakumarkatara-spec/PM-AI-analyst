@@ -1,0 +1,9 @@
+# Hand-written descriptions override auto-crawled ones. Keep these short and factual.
+tables:
+  public.sessions:
+    columns:
+      duration_s: Session length in seconds.
+      platform: One of web, ios, android.
+  public.events:
+    columns:
+      event_name: One of view_dashboard, create_report, invite_teammate, export_csv.
